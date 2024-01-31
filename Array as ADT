@@ -1,0 +1,64 @@
+#include <stdio.h>
+void insertion(int a[] , int data , int idx , int *size , int max ){
+    if(*size>=max){
+        printf("ERROR ARRAY OVERFLOW \n");
+        return;
+    } 
+    for(int i=*(size)+1; i>=idx; i--){
+        a[i]=a[i-1];
+    }
+    a[idx]=data;
+    *size = *size+1;
+    printf("Time Complexity of insertion is O(n) \n");
+}
+void searching(int a[], int size , int target){
+    for(int i=0; i<size; i++){
+        if(a[i]==target){
+        printf("Target is presesnt at %d",i);
+        return;
+        }
+    }
+    printf("Target not found");
+}
+void deleting(int a[],int idx , int *size , int max){
+    if(max<*size){
+        printf("Index is exceed the size of array \n");
+        return;
+    }
+    printf("The deleted value is %d\n",a[idx]);
+    for(int i=idx; i<*size-1; i++){
+        a[i]=a[i+1];
+    }
+      *size = *size-1;
+}
+void binarySearch(int a[] , int target ,int st , int end){
+    while(st<=end){
+        int mid=st+(end-st)/2;
+        if(a[mid]==target){
+            printf("Target is Found at %d\n",mid);
+            return;
+        }
+        if(a[mid]<target){
+            end = mid -1;
+        }else{
+            st = mid +1;
+        }
+    }
+}
+void display(int a[] , int size){
+    for(int i=0; i<size; i++){
+        printf("%d ",a[i]);
+    }
+}
+int main() {
+    // Write C code here
+    int arr[10]={1,2,3,4,5,6,7};
+    int size = 7;
+    // insertion(arr , 10 , 0 , &size , 10);
+    // display(arr, size);
+    // searching(arr , size , 4);
+    // deleting(arr , 3 , &size, 10);
+    // display(arr, size);
+    binarySearch(arr , 4 , 0 , size);
+    return 0;
+}
