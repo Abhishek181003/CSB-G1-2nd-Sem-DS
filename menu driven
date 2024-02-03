@@ -34,22 +34,6 @@ void deleting(int a[],int idx , int *size ){
       *size = *size-1;
      printf("\n");
 }
-void binarySearch(int a[] , int target ,int st , int end){
-    while(st<=end){
-        int mid=st+(end-st)/2;
-        if(a[mid]==target){
-            printf("Target is Found at %d\n",mid);
-            return;
-        }
-        if(a[mid]<target){
-            end = mid -1;
-        }else{
-            st = mid +1;
-        }
-    }
-    printf("Target is not found!");
-    printf("\n");
-}
 void display(int a[] , int size){
     for(int i=0; i<size; i++){
         printf("%d ",a[i]);
@@ -97,7 +81,7 @@ int main() {
         printf("Enter the element to be searched : ");
         int target;
         scanf("%d",&target);
-        binarySearch(arr , target ,0 , size-1);
+        searching(arr,size ,target);
     }
     else if(comd == 4){
         display(arr , size);
