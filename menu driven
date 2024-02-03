@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+void insertion(int a[] , int data , int idx , int *size){
+    if(*size>=idx){
+        a=(int*)realloc(a,sizeof(int)*(2*(*size)));
+    } 
+    for(int i=*(size)+1; i>=idx; i--){
+        a[i]=a[i-1];
+    }
+    a[idx]=data;
+    *size = *size+1;
+    printf("\n");
+}
+void searching(int a[], int size , int target){
+    for(int i=0; i<size; i++){
+        if(a[i]==target){
+        printf("Target is presesnt at %d",i);
+        printf("\n");
+        return;
+        }
+    }
+    printf("Target not found");
+    printf("\n");
+}
+void deleting(int a[],int idx , int *size ){
+    if(idx>=*size){
+        printf("Index is exceed the size of array \n");
+        return;
+    }
+    printf("The deleted value is %d\n",a[idx]);
+    for(int i=idx; i<*size-1; i++){
+        a[i]=a[i+1];
+    }
+      *size = *size-1;
+     printf("\n");
+}
+void binarySearch(int a[] , int target ,int st , int end){
+    while(st<=end){
+        int mid=st+(end-st)/2;
+        if(a[mid]==target){
+            printf("Target is Found at %d\n",mid);
+            return;
+        }
+        if(a[mid]<target){
+            end = mid -1;
+        }else{
+            st = mid +1;
+        }
+    }
+    printf("Target is not found!");
+    printf("\n");
+}
+void display(int a[] , int size){
+    for(int i=0; i<size; i++){
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+int main() {
+    printf("Enter the size of the array : ");
+    int size;
+    scanf("%d",&size);
+    int *arr = (int *)malloc(sizeof(int)*size);
+    if(arr == NULL){
+        printf("Memory not allocated \n");
+        return 0;
+    }
+    printf("Enter %d elements \n",size);
+    for(int i =0 ; i<size; i++){
+        scanf("%d",&arr[i]);
+    }
+    while (1){
+    printf("Choose the option : \n");
+    printf("1. Insetion \n");
+    printf("2. Deletion \n");
+    printf("3. Searching \n");
+    printf("4. Display \n");
+    printf("5. Exit \n");
+    int comd;
+    scanf("%d",&comd);
+    if(comd == 1){
+        printf("Enter the data to insert : ");
+        int temp;
+        scanf("%d",&temp);
+        printf("Enter the index at which data insert : ");
+        int idx;
+        scanf("%d",&idx);
+        insertion(arr,temp,idx,&size);
+    }
+    else if(comd == 2){
+        printf("Enter the index at which data need to be delete : ");
+        int idx;
+        scanf("%d",&idx);
+        deleting(arr,idx , &size );
+    }
+    else if(comd == 3){
+        printf("Enter the element to be searched : ");
+        int target;
+        scanf("%d",&target);
+        binarySearch(arr , target ,0 , size-1);
+    }
+    else if(comd == 4){
+        display(arr , size);
+    }else if(comd == 5) break;
+    else{
+        printf("Wrong Input");
+        break;
+    }
+    }
+    return 0;
+}
