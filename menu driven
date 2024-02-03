@@ -4,23 +4,26 @@ void insertion(int a[] , int data , int idx , int *size){
     if(*size>=idx){
         a=(int*)realloc(a,sizeof(int)*(2*(*size)));
     } 
+    if(idx>*size){
+        a[idx]=data;
+        *size= idx+1;
+    }else{
     for(int i=*(size)+1; i>=idx; i--){
         a[i]=a[i-1];
     }
     a[idx]=data;
     *size = *size+1;
-    printf("\n");
+    }
+    printf("Your data is added in Array :) \n");
 }
 void searching(int a[], int size , int target){
     for(int i=0; i<size; i++){
         if(a[i]==target){
-        printf("Target is presesnt at %d",i);
-        printf("\n");
-        return;
+            printf("Target is presesnt at %d \n",i);
+            return;
         }
     }
-    printf("Target not found");
-    printf("\n");
+    printf("Target not found :( \n");
 }
 void deleting(int a[],int idx , int *size ){
     if(idx>=*size){
@@ -35,6 +38,7 @@ void deleting(int a[],int idx , int *size ){
      printf("\n");
 }
 void display(int a[] , int size){
+    printf("Your Array is : ");
     for(int i=0; i<size; i++){
         printf("%d ",a[i]);
     }
@@ -59,6 +63,7 @@ int main() {
     printf("2. Deletion \n");
     printf("3. Searching \n");
     printf("4. Display \n");
+    printf("5. Size of the Array \n");
     printf("5. Exit \n");
     int comd;
     scanf("%d",&comd);
@@ -85,7 +90,8 @@ int main() {
     }
     else if(comd == 4){
         display(arr , size);
-    }else if(comd == 5) break;
+    }else if(comd == 5) printf("Size of the array is %d \n",size);
+    else if(comd == 6) break;
     else{
         printf("Wrong Input");
         break;
