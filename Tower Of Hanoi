@@ -1,0 +1,11 @@
+// Write a recursive function for Tower of Hanoi Problem.
+#include <stdio.h>
+void TOH( int num , char from , char to , char help ){
+    if(num == 0) return ;
+    TOH(num-1 , from , help , to);
+    printf("%c --> %c \n",from , to);
+    TOH(num-1 , help , to , from);
+}
+int main(){
+    TOH(4,'A','B','C');
+}
