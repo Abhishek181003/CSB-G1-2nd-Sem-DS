@@ -1,0 +1,14 @@
+// Write a recursive function to print the reverse of a string.
+#include <stdio.h>
+#include <stdlib.h>
+void reverseString(char *s ){
+    if(*s == '\0') return;
+    reverseString(s+1);
+    printf("%c",*s);
+}
+int main() {
+    char str[100];
+    fgets(str,100,stdin);
+    reverseString(str);
+    return 0;
+}
