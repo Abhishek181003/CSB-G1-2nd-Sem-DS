@@ -64,7 +64,7 @@ int main() {
     printf("3. Searching \n");
     printf("4. Display \n");
     printf("5. Size of the Array \n");
-    printf("5. Exit \n");
+    printf("6. Exit \n");
     int comd;
     scanf("%d",&comd);
     if(comd == 1){
