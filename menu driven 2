@@ -1,0 +1,109 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+// Write a menu driven program to perform the following operations on matrix.
+// a. Addition of two matrices.
+// b. Subtraction of two matrices.
+// c. Multiplication of two matrices.
+// d. Transpose of a matrix.
+void addition(int a[][],int b[][], int r1,int c1){
+    int temp[r1][c1];
+    for(int i=0; i<r1; i++){
+        for(int j=0; j<c1; j++){
+            temp[i][j]=a[i][j]+b[i][j];
+        }
+    }
+    printf("The Addition of the two matrices is :\n");
+    print2DArray(temp,r1,c1);
+}
+void subtraction(int a[][],int b[][], int r1,int c1){
+    int temp[r1][c1];
+    for(int i=0; i<r1; i++){
+        for(int j=0; j<c1; j++){
+            temp[i][j]=a[i][j]-b[i][j];
+        }
+    }
+    printf("The Subtration of the two matrices is :\n");
+    print2DArray(temp,r1,c1);
+}
+void multiplication(int a[][],int r1, int c1 , int b[][], int r2 , int c2){
+    if(c1!=r2){
+        printf("Multiplication is not possible \n");
+        return;
+    }
+    int new_array[r1][c2];
+    for(int i=0; i<r1; i++){
+        for(int j=0; j<c2; j++){
+            new_array[i][j]=0;
+            for(int k=0; k<c1; k++){
+                new_array[i][j] += a[i][k]*b[k][j];
+            }
+                    
+        }
+    }
+    printf("The multiplication of the two matrices is :\n");
+    print2DArray(new_array,r1,c2);
+}
+void print2DArray(int a[][],int r,int c){
+    for(int i=0; i<r; i++){
+        for(int j=0; j<c; j++){
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+int main() {
+    printf("Enter the Row and Column of the array 1 : ");
+    int r1,c1;
+    scanf("%d%d",&r1,&c1);
+    int arr1[r1][c1];
+    printf("Enter %d elements \n",r1*c1);
+    for(int i =0 ; i<r1; i++){
+        for(int j=0; j<c1; j++)
+            scanf("%d",&arr[i]);
+    }
+    printf("Enter the Row and Column of the array 2 : ");
+    int r2,c2;
+    scanf("%d%d",&r2,&c2);
+    int arr2[r2][c2];
+    printf("Enter %d elements \n",r2*c2);
+    for(int i =0 ; i<r1; i++){
+        for(int j=0; j<c1; j++)
+            scanf("%d",&arr[i]);
+    }
+    while (1){
+        printf("Choose the option : \n");
+        printf("1. Addition \n");
+        printf("2. Subtraction \n");
+        printf("3. Multiplication \n");
+        printf("4. Transpose \n");
+        printf("5. Exit \n");
+        int comd;
+        scanf("%d",&comd);
+        if(comd == 1){
+            if(r1==r2 && c1==c2){
+                addition(arr1,arr2,r1,c1);
+            }else{
+                printf("Addition is not possible \n");
+            }
+        }
+        else if(comd == 2){
+            if(r1==r2 && c1==c2){
+                subtraction(arr1,arr2,r1,c1);
+            }else{
+                printf("Subtraction is not possible \n");
+            }
+        }
+        else if(comd == 3){
+            multiplication( arr1,r1,c1,arr2,r2,c2);
+        }
+        else if(comd == 4){
+            // transpose( arr1,r1,c1,arr2,r2,c2);
+        }
+        else if(comd == 5) break;
+        else printf("Inavlid input \n");
+    }
+
+    return 0;
+}
