@@ -42,6 +42,15 @@ void multiplication(int a[][],int r1, int c1 , int b[][], int r2 , int c2){
     printf("The multiplication of the two matrices is :\n");
     print2DArray(new_array,r1,c2);
 }
+void transpose(int a[][],int r , int c){
+    for(int i=0; i<r; i++){
+        for(int j=i; j<c; j++){
+            int temp = a[i][j];
+            a[i][j]=a[j][i];
+            a[j][i]=temp;
+        }
+    }
+}
 void print2DArray(int a[][],int r,int c){
     for(int i=0; i<r; i++){
         for(int j=0; j<c; j++){
@@ -53,24 +62,7 @@ void print2DArray(int a[][],int r,int c){
 }
 
 int main() {
-    printf("Enter the Row and Column of the array 1 : ");
-    int r1,c1;
-    scanf("%d%d",&r1,&c1);
-    int arr1[r1][c1];
-    printf("Enter %d elements \n",r1*c1);
-    for(int i =0 ; i<r1; i++){
-        for(int j=0; j<c1; j++)
-            scanf("%d",&arr[i][j]);
-    }
-    printf("Enter the Row and Column of the array 2 : ");
-    int r2,c2;
-    scanf("%d%d",&r2,&c2);
-    int arr2[r2][c2];
-    printf("Enter %d elements \n",r2*c2);
-    for(int i =0 ; i<r1; i++){
-        for(int j=0; j<c1; j++)
-            scanf("%d",&arr[i][j]);
-    }
+   
     while (1){
         printf("Choose the option : \n");
         printf("1. Addition \n");
@@ -81,6 +73,24 @@ int main() {
         int comd;
         scanf("%d",&comd);
         if(comd == 1){
+            printf("Enter the Row and Column of the array 1 : ");
+            int r1,c1;
+            scanf("%d%d",&r1,&c1);
+            int arr1[r1][c1];
+            printf("Enter %d elements \n",r1*c1);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
+            printf("Enter the Row and Column of the array 2 : ");
+            int r2,c2;
+            scanf("%d%d",&r2,&c2);
+            int arr2[r2][c2];
+            printf("Enter %d elements \n",r2*c2);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
             if(r1==r2 && c1==c2){
                 addition(arr1,arr2,r1,c1);
             }else{
@@ -88,6 +98,24 @@ int main() {
             }
         }
         else if(comd == 2){
+            printf("Enter the Row and Column of the array 1 : ");
+            int r1,c1;
+            scanf("%d%d",&r1,&c1);
+            int arr1[r1][c1];
+            printf("Enter %d elements \n",r1*c1);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
+            printf("Enter the Row and Column of the array 2 : ");
+            int r2,c2;
+            scanf("%d%d",&r2,&c2);
+            int arr2[r2][c2];
+            printf("Enter %d elements \n",r2*c2);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
             if(r1==r2 && c1==c2){
                 subtraction(arr1,arr2,r1,c1);
             }else{
@@ -95,10 +123,37 @@ int main() {
             }
         }
         else if(comd == 3){
+            printf("Enter the Row and Column of the array 1 : ");
+            int r1,c1;
+            scanf("%d%d",&r1,&c1);
+            int arr1[r1][c1];
+            printf("Enter %d elements \n",r1*c1);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
+            printf("Enter the Row and Column of the array 2 : ");
+            int r2,c2;
+            scanf("%d%d",&r2,&c2);
+            int arr2[r2][c2];
+            printf("Enter %d elements \n",r2*c2);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+            }
             multiplication( arr1,r1,c1,arr2,r2,c2);
         }
         else if(comd == 4){
-            // transpose( arr1,r1,c1,arr2,r2,c2);
+            printf("Enter the Row and Column of the array : ");
+            int r1,c1;
+            scanf("%d%d",&r1,&c1);
+            int arr1[r1][c1];
+            printf("Enter %d elements \n",r1*c1);
+            for(int i =0 ; i<r1; i++){
+                for(int j=0; j<c1; j++)
+                    scanf("%d",&arr[i][j]);
+                }
+            transpose(arr1,r1,c1);
         }
         else if(comd == 5) break;
         else printf("Inavlid input \n");
