@@ -147,7 +147,7 @@ int main() {
             printf("Enter the Row and Column of the array : ");
             int r1,c1;
             scanf("%d%d",&r1,&c1);
-            int arr1[r1][c1];
+            int arr[r1][c1];
             printf("Enter %d elements \n",r1*c1);
             for(int i =0 ; i<r1; i++){
                 for(int j=0; j<c1; j++)
