@@ -19,13 +19,13 @@ int ** sparseMatrix(int a[3][3],int row , int column , int count){
     }
    
     array[0][0]=row; // it will store the row of the original matrix
-    array[0][1]=column; // it will store the column of the original matrix
-    array[0][2]=row*column; // it will store total elements original matrix
+    array[1][0]=column; // it will store the column of the original matrix
+    array[2][0]=row*column; // it will store total elements original matrix
     int k=1;
-     printf("row %d col = %d",array[0][0], count);
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
             if(a[i][j]!=0){
+                printf("row = %d col = %d \n",i,j);
                 array[0][k]=i;
                 array[1][k]=j;
                 array[2][k]=a[i][j];
@@ -33,13 +33,6 @@ int ** sparseMatrix(int a[3][3],int row , int column , int count){
             } 
         }
     }
-    printf("The Compressed Matrix \n");
-        for(int i =0 ; i<3; i++){
-            for(int j=0; j<count+1; j++){
-                printf("%d ",array[i][j]);
-            }
-            printf("\n");
-        }
     return array;
 }
 
@@ -47,14 +40,16 @@ int main() {
     printf("Enter the Row and Column of the Sparse Matrix : ");
     int **newArray;
         int count=0;
-        int row,column;
-        scanf("%d%d",&row,&column);
-        int arr[row][column];
-        printf("Enter %d elements \n",row*column);
-        for(int i =0 ; i<row; i++){
-            for(int j=0; j<column; j++)
-                scanf("%d",&arr[i][j]);
-        }
+        // int row,column;
+        // scanf("%d%d",&row,&column);
+        int row=4, column=4;
+        int arr[4][4]={6,0,0,0,1,2,0,0,0,0,0,0,0,0,0,6};
+        // int arr[row][column];
+        // printf("Enter %d elements \n",row*column);
+        // for(int i =0 ; i<row; i++){
+        //     for(int j=0; j<column; j++)
+        //         scanf("%d",&arr[i][j]);
+        // }
         printf("The Matrix you entered\n");
         for(int i =0 ; i<row; i++){
             for(int j=0; j<column; j++){
@@ -69,7 +64,13 @@ int main() {
         printf("The given matrix is not Sparse Matrix \n");
         return 0;
     }
-    
+     printf("The Compressed Matrix \n");
+        for(int i =0 ; i<3; i++){
+            for(int j=1; j<=count+1; j++){
+                printf("%d ",newArray[i][j]);
+            }
+            printf("\n");
+        }
         // printf("The number of the non zeroes is %d \n",count);
     
     return 0;
