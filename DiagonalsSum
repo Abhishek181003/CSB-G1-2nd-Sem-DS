@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void sumDiagonals(int a[3][3], int row, int *sumMainDiagonal, int *sumSecondaryDiagonal) {
+    for (int i = 0; i < row; i++) {
+        *sumMainDiagonal += a[i][i];
+    }
+    for (int i = 0; i < row; i++) {
+        *sumSecondaryDiagonal += a[i][row - 1 - i];
+    }
+}
+int main() {
+    int rows, cols;
+    int sumSecondaryDiagonal=0 , sumMainDiagonal=0;
+    
+    printf("Enter the number of rows and colums: ");
+    scanf("%d%d", &rows,&cols);
+    
+    int array[rows][cols];
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &array[i][j]);
+        }
+    }
+    
+    printf("The Matrix you entered\n");
+    for(int i =0 ; i<rows; i++){
+        for(int j=0; j<cols; j++){
+            printf("%d ",array[i][j]);
+        }
+        printf("\n");
+    }
+    sumDiagonals(array,rows,&sumMainDiagonal,&sumSecondaryDiagonal);
+    printf("The sum of main diagonal is %d \nThe sum of the secondary diagonal is %d",sumMainDiagonal , sumSecondaryDiagonal);
+    
+    return 0;
+}
