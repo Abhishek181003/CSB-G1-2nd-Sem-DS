@@ -34,7 +34,10 @@ int ** sparseMatrix(int a[4][4],int row , int column , int count){
     }
     return array;
 }
-
+void extraction (int a[3][5]){
+    int row = a[0][0] , col=a[1][0];
+    printf("row %d , col =%d ",row,col);
+}
 int main() {
     printf("Enter the Row and Column of the Sparse Matrix : ");
     int **newArray;
@@ -63,11 +66,11 @@ int main() {
     }
     printf("The Compressed Matrix \n");
         for(int i =0 ; i<3; i++){
-            for(int j=1; j<count+1; j++){
+            for(int j=0; j<count+1; j++){
                 printf("%d ",newArray[i][j]);
             }
             printf("\n");
         }
-    
+    extraction(newArray);
     return 0;
 }
