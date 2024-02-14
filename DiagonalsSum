@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void sumDiagonals(int a[3][3], int row, int *sumMainDiagonal, int *sumSecondaryDiagonal) {
+void sumDiagonals(int row,int a[row][row],  int *sumMainDiagonal, int *sumSecondaryDiagonal) {
     for (int i = 0; i < row; i++) {
         *sumMainDiagonal += a[i][i];
     }
@@ -9,28 +9,28 @@ void sumDiagonals(int a[3][3], int row, int *sumMainDiagonal, int *sumSecondaryD
     }
 }
 int main() {
-    int rows, cols;
+    int rows;
     int sumSecondaryDiagonal=0 , sumMainDiagonal=0;
     
-    printf("Enter the number of rows and colums: ");
-    scanf("%d%d", &rows,&cols);
+    printf("Enter the number of rows of square matrix: ");
+    scanf("%d", &rows);
     
-    int array[rows][cols];
-    printf("Enter the elements of the matrix:\n");
+    int array[rows][rows];
+    printf("Enter the %d elements for the matrix:\n",rows*rows);
     for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+        for (int j = 0; j < rows; j++) {
             scanf("%d", &array[i][j]);
         }
     }
     
     printf("The Matrix you entered\n");
     for(int i =0 ; i<rows; i++){
-        for(int j=0; j<cols; j++){
+        for(int j=0; j<rows; j++){
             printf("%d ",array[i][j]);
         }
         printf("\n");
     }
-    sumDiagonals(array,rows,&sumMainDiagonal,&sumSecondaryDiagonal);
+    sumDiagonals(rows,array,&sumMainDiagonal,&sumSecondaryDiagonal);
     printf("The sum of main diagonal is %d \nThe sum of the secondary diagonal is %d",sumMainDiagonal , sumSecondaryDiagonal);
     
     return 0;
