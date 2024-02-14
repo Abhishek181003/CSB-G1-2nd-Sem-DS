@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int isSparse(int a[4][4] , int row , int column , int *count ){
+int isSparse(int row , int column , int a[row][column] , int *count ){
     for(int i =0 ; i<row; i++){ 
         for(int j=0; j<column; j++){
             if(a[i][j] != 0) (*count)=(*count)+1; // count the non zeroes
@@ -11,7 +11,7 @@ int isSparse(int a[4][4] , int row , int column , int *count ){
     }
     else return 0;
 }
-int ** sparseMatrix(int a[4][4],int row , int column , int count){
+int ** sparseMatrix(int row , int column , int a[row][column],int count){
     // Creating the 2D Array that store the non zeroes elements
     int **array=(int **)malloc(sizeof(int)*3);
     for(int i=0; i<3; i++){
@@ -34,7 +34,7 @@ int ** sparseMatrix(int a[4][4],int row , int column , int count){
     }
     return array;
 }
-void extraction (int a[3][5]){
+void extraction (int column,int a[3][column]){
     int row = a[0][0] , col=a[1][0];
     printf("row %d , col =%d ",row,col);
 }
@@ -57,9 +57,9 @@ int main() {
         }
         printf("\n");
     }
-    if(isSparse(arr,row,column,&count)){
+    if(isSparse(row,column,arr,&count)){
         printf("The given matrix is sparse matrix \n");
-        newArray = sparseMatrix(arr,row,column,count);
+        newArray = sparseMatrix(row,column,arr,count);
     }else{
         printf("The given matrix is not Sparse Matrix \n");
         return 0;
@@ -71,6 +71,8 @@ int main() {
             }
             printf("\n");
         }
-    extraction(newArray);
+    int rows = newArray[0][0] , cols=newArray[1][0];
+    printf("row %d , col =%d ",rows,cols);
+    extraction(count+1,newArray);
     return 0;
 }
